@@ -1,0 +1,13 @@
+{
+  "name": "@metosin/hubot-tweet",
+  "version": "0.0.1",
+  "description": "Send tweets from Hubot. With confirmation.",
+  "url": "https://github.com/metosin/hubot-tweet",
+  "repository": "https://github.com/metosin/hubot-tweet",
+  "author": "Juho Teperi",
+  "license": "MIT",
+  "dependencies": {
+    "twitter": "^1.2.5"
+  },
+  "main": "index.js"
+}
