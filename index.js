@@ -38,7 +38,7 @@ module.exports = function(robot) {
     msg.reply("Confirm retweet by replying \"OK\" to this thread.");
   });
 
-  robot.hear(/OK/i, function(msg) {
+  robot.hear(/^ok$/i, function(msg) {
     var thread = msg.message.metadata.thread_id;
 
     var tweet = robot.brain.get("tweet." + thread);
