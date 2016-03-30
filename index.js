@@ -81,7 +81,7 @@ module.exports = function(robot) {
     var tweet = robot.brain.get("tweet." + thread);
 
     if (tweet) {
-      msg.reply("FAIL");
+      msg.reply("Cancelled");
       robot.brain.remove("tweet." + thread);
     } else {
       console.log("No tweet found for thread: " + thread);
