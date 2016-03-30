@@ -28,7 +28,7 @@ module.exports = function(robot) {
     var thread = msg.message.metadata.thread_id;
     robot.brain.set("tweet." +  thread, {"message": msg.match[1], "ok": [msg.message.user.id]});
     console.log("Adding tweet for thread: " + thread);
-    msg.reply("Confirm tweet by replying \"OK\" to this thread.");
+    msg.reply("Confirm tweet by replying \"OK\" to this thread, or \"Cancel\" to abort.");
   });
 
   robot.respond(/retweet http[s]?:\/\/twitter\.com\/(.*)\/status\/([0-9]*)/i, function(msg) {
