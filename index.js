@@ -35,7 +35,7 @@ module.exports = function(robot) {
     var thread = msg.message.metadata.thread_id;
     robot.brain.set("tweet." +  thread, {"tweetid": msg.match[2], "ok": [msg.message.user.id]});
     console.log("Adding retweet for thread: " + thread);
-    msg.reply("Confirm retweet by replying \"OK\" to this thread.");
+    msg.reply("Confirm retweet by replying \"OK\" to this thread, or \"Cancel\" to abort.");
   });
 
   robot.hear(/^ok$/i, function(msg) {
@@ -69,6 +69,20 @@ module.exports = function(robot) {
       } else {
         msg.reply("I need more confirmations.");
       }
+    } else {
+      console.log("No tweet found for thread: " + thread);
+    }
+  });
+
+
+  robot.hear(/^(cancel|abort|halt)$/i, function(msg) {
+    var thread = msg.message.metadata.thread_id;
+
+    var tweet = robot.brain.get("tweet." + thread);
+
+    if (tweet) {
+      msg.reply("FAIL");
+      robot.brain.remove("tweet." + thread);
     } else {
       console.log("No tweet found for thread: " + thread);
     }
